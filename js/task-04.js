@@ -12,17 +12,27 @@
 // Оновлюй інтерфейс новим значенням змінної counterValue.
 
 
-const counter = document.querySelector('#value');
-counter.value = 0;
+let counterValue = 0;
+const step = 1;
 
-const incrementButton = document.querySelector('button[data-action="increment"]');
-incrementButton.addEventListener('click', () => {
-  counter.value++;
-  counter.textContent = counter.value;
+const valueEl = document.querySelector("#value");
+const decrementBtn = document.querySelector("[data-action=decrement]");
+const incrementBtn = document.querySelector("[data-action=increment]");
+
+const decrement = () => {
+  counterValue -= step;
+};
+
+const increment = () => {
+  counterValue += step;
+};
+
+decrementBtn.addEventListener("click", function () {
+  decrement();
+  valueEl.textContent = counterValue;
 });
 
-const decrementButton = document.querySelector('button[data-action="decrement"]');
-decrementButton.addEventListener('click', () => {
-  counter.value--;
-  counter.textContent = counter.value;
+incrementBtn.addEventListener("click", function () {
+  increment();
+  valueEl.textContent = counterValue;
 });
